@@ -38,3 +38,5 @@ node_modules
 .env
 
 templates.json
+yarn.lock
+package-lock.json
