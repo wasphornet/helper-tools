@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import templates from "../../templates.json"
+import template from '@/templates/convert-token.json'
 
 const TokenConvert = () => {
-    const { template_string: templateString, mapping_key: mappingKey } = templates?.convert_token || {}
+    const { template_string: templateString, mapping_key: mappingKey } = template || {}
     const [jsonText, setJsonText] = useState('')
     const [result, setResult] = useState('')
     const [error, setError] = useState(false)
