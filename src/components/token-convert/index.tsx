@@ -62,6 +62,17 @@ const TokenConvert = () => {
                 />
                 <div id="button-wrapper" className="flex gap-5 justify-center">
                     <button
+                        id="clear-button"
+                        className="flex-auto btn btn-active btn-error"
+                        onClick={() => {
+                            setJsonText('')
+                            setResult('')
+                        }}
+                    >
+                        <ClearIcon />
+                        Clear
+                    </button>
+                    <button
                         id="convert-button"
                         className="flex-auto btn btn-active btn-success"
                         onClick={onClickConvert}
@@ -79,17 +90,6 @@ const TokenConvert = () => {
                     >
                         <ContentCopyIcon />
                         Copy
-                    </button>
-                    <button
-                        id="clear-button"
-                        className="flex-auto btn btn-active btn-error"
-                        onClick={() => {
-                            setJsonText('')
-                            setResult('')
-                        }}
-                    >
-                        <ClearIcon />
-                        Clear
                     </button>
                 </div>
                 <div id="result-textarea-wrapper">
