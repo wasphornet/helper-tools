@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export type ThemeType = string|"dracula"|"night"|"garden"|"light"
+export type ThemeType = string
 
 export interface ThemeState {
   value: ThemeType
