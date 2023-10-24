@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import template from '@/templates/convert-token.json'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import TransformIcon from '@mui/icons-material/Transform';
-import ClearIcon from '@mui/icons-material/Clear';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import ClearIcon from '@mui/icons-material/Clear'
 
 
 const TokenConvert = () => {
@@ -11,9 +10,8 @@ const TokenConvert = () => {
     const [result, setResult] = useState('')
     const [error, setError] = useState(false)
 
-    const onClickConvert = () => {
+    const convertAndClear = () => {
         if (!jsonText) return
-        console.log("🚀 ~ file: index.tsx:12 ~ onClickConvert ~ jsonText:", jsonText)
 
         try {
             const json = JSON.parse(jsonText)
@@ -36,10 +34,25 @@ const TokenConvert = () => {
                 setError(true)
             } else {
                 setResult(newString)
+                copyToClipboard(newString)
             }
         } catch (error) {
             setError(true)
         }
+    }
+
+    const copyToClipboard = async (text:string) => {
+        navigator.clipboard.writeText(text)
+    }
+
+    const clearAndPaste = async () => {
+        const text = await navigator.clipboard.readText();
+        setJsonText(text)
+    }
+
+    const onChangeTextarea = (value:string) => {
+        setError(false)
+        setJsonText(value)
     }
 
     return (
@@ -55,41 +68,25 @@ const TokenConvert = () => {
                     rows={5}
                     placeholder="Bio"
                     value={jsonText}
-                    onChange={(e) => {
-                        setError(false)
-                        setJsonText(e.target.value)
-                    }}
+                    onChange={(e) => onChangeTextarea(e?.target?.value)}
                 />
                 <div id="button-wrapper" className="flex gap-5 justify-center">
                     <button
                         id="clear-button"
                         className="flex-auto btn btn-active btn-error"
-                        onClick={() => {
-                            setJsonText('')
-                            setResult('')
-                        }}
+                        onClick={clearAndPaste}
                     >
                         <ClearIcon />
-                        Clear
+                        Clear & Paste
                     </button>
                     <button
                         id="convert-button"
                         className="flex-auto btn btn-active btn-success"
-                        onClick={onClickConvert}
+                        onClick={convertAndClear}
                         disabled={!templateString || !mappingKey?.length}
                     >
-                        <TransformIcon />
-                        Convert
-                    </button>
-                    <button
-                        id="copy-button"
-                        className="flex-auto btn btn-active btn-primary"
-                        onClick={() => {
-                            navigator.clipboard.writeText(result)
-                        }}
-                    >
                         <ContentCopyIcon />
-                        Copy
+                        Convert & Copy
                     </button>
                 </div>
                 <div id="result-textarea-wrapper">
