@@ -64,7 +64,7 @@ const TokenConvert = () => {
                     <span>Is invalid data or incorrect format</span>
                 </div>}
                 <textarea
-                    className="textarea textarea-info text-white min-w-full"
+                    className="textarea textarea-info min-w-full"
                     rows={5}
                     placeholder="Bio"
                     value={jsonText}

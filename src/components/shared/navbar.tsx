@@ -11,11 +11,14 @@ const Navbar = () => {
     const [checked, setChecked] = useState(false)
 
     const onClickChangeTheme = () => {
-        let newTheme = 'dracula'
+        let newTheme
         if ( theme === 'dracula' ) {
             newTheme = 'garden'
+        } else {
+            newTheme = 'dracula'
         }
         dispatch(setTheme(newTheme))
+        localStorage.setItem('theme', newTheme)
     }
 
     useEffect(() => {
@@ -23,7 +26,11 @@ const Navbar = () => {
     }, [theme])
 
     useEffect(() => {
-        const localTheme = String(localStorage.getItem('theme')) || 'dracula'
+        let localTheme = String(localStorage.getItem('theme'))
+        if ( !localTheme ) {
+            console.log("🚀 ~ file: navbar.tsx:27 ~ useEffect ~ localTheme:", localTheme)
+            localTheme = 'dracula'
+        }
         dispatch(setTheme(localTheme))
     }, [])
 
@@ -33,7 +40,7 @@ const Navbar = () => {
                 <p className="text-2xl">Helpers tools</p>
             </div>
             <div className="mx-5">
-                <span className="label-text mr-5 font-bold">{firstUpperCase(theme ?? '')}</span>
+                <span className="label-text mr-5 font-bold">{firstUpperCase(theme)}</span>
                 <input type="checkbox" className="toggle" checked={checked} onClick={onClickChangeTheme} />
             </div>
             {/* <div className="flex-none">
