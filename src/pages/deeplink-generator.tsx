@@ -1,9 +1,12 @@
-import DeeplinkGenerator from '@/components/deeplink-generator'
+import TemplatePage from 'components/@shared/template-page'
+import Component from 'components/deeplink-generator'
 
-const Generator = () => {
+const DeeplinkGenerator = () => {
   return (
-      <DeeplinkGenerator />
+    <TemplatePage>
+      <Component />
+    </TemplatePage>
   )
 }
 
-export default Generator
+export default DeeplinkGenerator

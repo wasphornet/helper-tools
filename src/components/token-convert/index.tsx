@@ -1,17 +1,24 @@
 import React, { useState } from "react"
-import template from '@/templates/convert-token.json'
+import template from 'templates/convert-token.json'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
+import { toastTypes } from 'utils/constants-value'
 
-
+let timeout: any = null
 const TokenConvert = () => {
     const { template_string: templateString, mapping_key: mappingKey } = template || {}
-    const [jsonText, setJsonText] = useState('')
-    const [result, setResult] = useState('')
-    const [error, setError] = useState(false)
+    const [jsonText, setJsonText] = useState<string>('')
+    const [result, setResult] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
+    const [toastProp, setToastProp] = useState<{ text: string, className: string }>({
+        text: '',
+        className: ''
+    })
+    const [showToast, setShowToast] = useState<boolean>(false)
 
     const convertAndClear = () => {
         if (!jsonText) return
+        setError(false)
 
         try {
             const json = JSON.parse(jsonText)
@@ -41,28 +48,61 @@ const TokenConvert = () => {
         }
     }
 
-    const copyToClipboard = async (text:string) => {
+    const copyToClipboard = async (text: string) => {
         navigator.clipboard.writeText(text)
+        setToastValue('Copied to clipboard', 'success')
     }
 
     const clearAndPaste = async () => {
-        const text = await navigator.clipboard.readText();
+        const text = await navigator.clipboard.readText()
         setJsonText(text)
+        setToastValue('Pasted from clipboard', 'info')
     }
 
-    const onChangeTextarea = (value:string) => {
+    const onChangeTextarea = (value: string) => {
         setError(false)
         setJsonText(value)
     }
 
+    const clearToast = () => {
+        if (timeout) clearTimeout(timeout)
+        setShowToast(false)
+    }
+
+    const setTimeoutToast = () => {
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            setShowToast(false)
+        }, 3000)
+    }
+
+    const setToastValue = (text: string, style: string) => {
+        setShowToast(false)
+        const className: string = `alert ${(toastTypes[style])}`
+        setToastProp({
+            text,
+            className: className
+        })
+        setShowToast(true)
+        setTimeoutToast()
+    }
+
+
     return (
         <div id="token-convert-wrapper" className="min-w-full">
+            <div className="toast toast-top toast-end">
+                {showToast && (
+                    <button className={toastProp.className} onClick={() => clearToast()}>
+                        <span>{toastProp.text}</span>
+                    </button>
+                )}
+            </div>
             <p className="text-xl">Token Convert</p>
             <div id="content-wrapper" className="grid gap-5 my-5">
-                {error && <div className="alert alert-error">
+                <div className={`alert alert-error transition-opacity duration-500 ${error ? 'opacity-100' : 'opacity-0'}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     <span>Is invalid data or incorrect format</span>
-                </div>}
+                </div>
                 <textarea
                     className="textarea textarea-info min-w-full"
                     rows={5}
