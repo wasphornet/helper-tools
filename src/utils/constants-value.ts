@@ -9,8 +9,8 @@ interface IToastTypes {
     [key: string]: string
 }
 export const toastTypes:IToastTypes = {
-    success: "alert-success",
-    error: "alert-error",
-    info: "alert-info",
-    warning: "alert-warning",
+    success: "btn btn-success",
+    error: "btn btn-error",
+    info: "btn btn-info",
+    warning: "btn btn-warning",
 }

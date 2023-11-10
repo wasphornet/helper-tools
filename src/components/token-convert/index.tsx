@@ -10,10 +10,11 @@ const TokenConvert = () => {
     const [jsonText, setJsonText] = useState<string>('')
     const [result, setResult] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
-    const [toastProp, setToastProp] = useState<{ text: string, className: string }>({
+    const [toastProp, setToastProp] = useState<{ text: string, type: string }>({
         text: '',
-        className: ''
+        type: ''
     })
+    console.log("🚀 ~ file: index.tsx:17 ~ TokenConvert ~ toastProp:", toastProp)
     const [showToast, setShowToast] = useState<boolean>(false)
 
     const convertAndClear = () => {
@@ -78,10 +79,9 @@ const TokenConvert = () => {
 
     const setToastValue = (text: string, style: string) => {
         setShowToast(false)
-        const className: string = `alert ${(toastTypes[style])}`
         setToastProp({
             text,
-            className: className
+            type: toastTypes[style]
         })
         setShowToast(true)
         setTimeoutToast()
@@ -92,8 +92,8 @@ const TokenConvert = () => {
         <div id="token-convert-wrapper" className="min-w-full">
             <div className="toast toast-top toast-end">
                 {showToast && (
-                    <button className={toastProp.className} onClick={() => clearToast()}>
-                        <span>{toastProp.text}</span>
+                    <button className={toastProp.type} onClick={() => clearToast()}>
+                        {toastProp.text}
                     </button>
                 )}
             </div>
