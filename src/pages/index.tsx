@@ -1,5 +1,5 @@
-import TemplatePage from '@/components/shared/template-page'
-import Component from '@/components/token-convert'
+import TemplatePage from 'components/@shared/template-page'
+import Component from 'components/token-convert'
 
 
 const ConvertToken = () => {

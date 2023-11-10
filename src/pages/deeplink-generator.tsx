@@ -1,5 +1,5 @@
-import TemplatePage from '@/components/shared/template-page'
-import Component from '@/components/deeplink-generator'
+import TemplatePage from 'components/@shared/template-page'
+import Component from 'components/deeplink-generator'
 
 const DeeplinkGenerator = () => {
   return (
