@@ -23,6 +23,7 @@
     "daisyui": "^3.7.3",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "jsencrypt": "^3.3.2",
     "lodash": "^4.17.21",
     "next": "13.4.19",
     "postcss": ">=8.4.31",
