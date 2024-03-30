@@ -36,7 +36,7 @@ const ToasterComponent = () => {
     }, [])
 
     return (
-        <div className="toast toast-top toast-end z-50">
+        <div className="toast toast-top toast-end mt-24">
             {show && (
                 <button className={classNameType} onClick={() => clearToast()}>
                     {message}
