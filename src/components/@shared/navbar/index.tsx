@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from "next/router"
 
-import { setTheme } from 'reducers/theme-reducer'
+import { setTheme } from 'reduxs/theme-redux'
 import { RootState } from "store"
 import { themeSite } from 'utils/constants-value'
 import { firstUpperCase } from "utils/helpers"
@@ -10,8 +10,9 @@ import { NavbarStyled, DrawerStyled } from './navbar.styled'
 
 const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
-  { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
-  { routeName: 'Encrypt RSA', pathname: '/encrypt-rsa' }
+  // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
+  { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
+  { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' }
 ]
 
 const Navbar = () => {

@@ -14,7 +14,6 @@ const TokenConvert = () => {
         text: '',
         type: ''
     })
-    console.log("🚀 ~ file: index.tsx:17 ~ TokenConvert ~ toastProp:", toastProp)
     const [showToast, setShowToast] = useState<boolean>(false)
 
     const convertAndClear = () => {

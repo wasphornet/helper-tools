@@ -16,6 +16,9 @@ const nextConfig = {
       loader: "ignore-loader",
     });
     return config;
+  },
+  compiler: {
+    removeConsole: false
   }
 };
 module.exports = nextConfig
