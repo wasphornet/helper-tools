@@ -12,6 +12,7 @@ const MainStyled = tw.main`
     items-center 
     justify-between 
     p-16
+    overflow-x-auto
 `
 
 const Home = ({ children }: any) => {

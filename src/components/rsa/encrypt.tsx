@@ -9,7 +9,7 @@ const EncryptRSA = () => {
     const [encryptValue, setEncryptValue] = useState<string>('')
     const [encryptResult, setEncryptResult] = useState<string>('')
 
-    const setChangeValue = (key:string , text: string) => {
+    const setChangeValue = (key: string, text: string) => {
         switch (key) {
             case 'encryptKey':
                 setEncryptKey(text)
@@ -26,7 +26,11 @@ const EncryptRSA = () => {
     const onEncryptValue = () => {
         encrypt.setPublicKey(encryptKey)
         const result = encrypt.encrypt(encryptValue)
-        setChangeValue('encryptResult', result.toString())
+        if (!result) {
+            setChangeValue('encryptResult', 'Encrypt failed')
+        } else {
+            setChangeValue('encryptResult', result.toString())
+        }
     }
 
     return (
@@ -36,7 +40,7 @@ const EncryptRSA = () => {
                 <p className="text-l">Encrypt Key</p>
                 <textarea
                     className="textarea textarea-info min-w-full"
-                    rows={3}
+                    rows={2}
                     placeholder="Encrypt Key"
                     value={encryptKey}
                     onChange={(e) => setChangeValue('encryptKey', e?.target?.value)}
@@ -61,7 +65,7 @@ const EncryptRSA = () => {
                 <div id="result-textarea-wrapper">
                     <textarea
                         className="textarea textarea-info text-white min-w-full"
-                        rows={5}
+                        rows={3}
                         placeholder="Encrypt Result"
                         value={encryptResult}
                         readOnly
