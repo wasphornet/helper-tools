@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "rm -rf .next .firebase && next build && firebase deploy --only hosting"
+    "deploy": "firebase login && rm -rf .next .firebase && next build && firebase deploy --only hosting && firebase logout"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
