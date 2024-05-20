@@ -107,7 +107,7 @@ const TokenConvert = () => {
                 <textarea
                     className="textarea textarea-info min-w-full"
                     rows={5}
-                    placeholder="Bio"
+                    placeholder="Response JSON"
                     value={jsonText}
                     onChange={(e) => onChangeTextarea(e?.target?.value)}
                 />
@@ -134,7 +134,7 @@ const TokenConvert = () => {
                     <textarea
                         className="textarea textarea-info text-white min-w-full"
                         rows={5}
-                        placeholder="Bio"
+                        placeholder="Result"
                         value={result}
                         readOnly
                     />
