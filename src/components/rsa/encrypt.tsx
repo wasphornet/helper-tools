@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import JSEncrypt from 'jsencrypt'
-
+import TextareaWithButton from 'components/@shared/textarea-with-button'
 
 const EncryptRSA = () => {
     const encrypt = new JSEncrypt()
+    const key = 'qrE9K'
 
     const [encryptKey, setEncryptKey] = useState<string>('')
     const [encryptValue, setEncryptValue] = useState<string>('')
@@ -38,12 +39,13 @@ const EncryptRSA = () => {
             <p className="text-xl">Encrypt RSA</p>
             <div id="content-wrapper" className="grid gap-5 my-5 pt-3">
                 <p className="text-l">Encrypt Key</p>
-                <textarea
-                    className="textarea textarea-info min-w-full"
-                    rows={2}
-                    placeholder="Encrypt Key"
+                <TextareaWithButton
+                    key={key}
+                    storageKey={key}
+                    rows={3}
                     value={encryptKey}
-                    onChange={(e) => setChangeValue('encryptKey', e?.target?.value)}
+                    placeholder="Encrypt Key"
+                    onChange={(value: any) => setChangeValue('encryptKey', value)}
                 />
                 <p className="text-l">Encrypt Value</p>
                 <textarea

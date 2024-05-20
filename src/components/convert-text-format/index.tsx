@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear'
 import { toastTypes } from 'utils/constants-value'
 
 let timeout: any = null
-const TokenConvert = () => {
+const ConvertTextFormat = () => {
     const { template_string: templateString, mapping_key: mappingKey } = template || {}
     const [jsonText, setJsonText] = useState<string>('')
     const [result, setResult] = useState<string>('')
@@ -21,27 +21,38 @@ const TokenConvert = () => {
         setError(false)
 
         try {
-            const json = JSON.parse(jsonText)
-            const data = json?.data || {}
-            if (!data || !Object.keys(data).length) {
+            const data = JSON.parse(jsonText)
+            console.log("🐯 ~ file: index.tsx:25 ~ convertAndClear ~ data:", data)
+            if (!data?.customer) {
                 setError(true)
                 return
             }
-            let notFoundKey = false
-            let newString = templateString
-            mappingKey.forEach((item: { key: string, replace_key: string }) => {
-                const { key, replace_key } = item || {}
-                if (!key || !replace_key || !data?.[key]) {
-                    notFoundKey = true
-                } else {
-                    newString = newString.replace(replace_key, data?.[key])
-                }
+            const rm_id = data?.customer?.profile?.rm_id
+            console.log("🐯 ~ file: index.tsx:31 ~ convertAndClear ~ rm_id:", rm_id)
+            const product_holdings = data?.customer?.product_holdings
+            console.log("🐯 ~ file: index.tsx:33 ~ convertAndClear ~ product_holdings:", product_holdings)
+            const { saving_accounts, current_accounts, loan_accounts, hire_purchase_accounts, mutual_fund_accounts, structured_note_accounts } = product_holdings
+
+            const merge_array = [
+                ...saving_accounts,
+                ...current_accounts,
+                ...loan_accounts,
+                ...hire_purchase_accounts,
+                ...mutual_fund_accounts,
+                ...structured_note_accounts
+            ]
+
+            const result = merge_array?.map((item) => {
+                return `${rm_id},${item.product_code},${item.acct_nbr}`
             })
-            if (notFoundKey) {
+            const text = result.join('\n')
+            
+            
+            if (!text) {
                 setError(true)
             } else {
-                setResult(newString)
-                copyToClipboard(newString)
+                setResult(text)
+                copyToClipboard(text)
             }
         } catch (error) {
             setError(true)
@@ -96,7 +107,7 @@ const TokenConvert = () => {
                     </button>
                 )}
             </div>
-            <p className="text-xl">Token Convert</p>
+            <p className="text-xl">Convert Text Format</p>
             <div id="content-wrapper" className="grid gap-5 my-5">
                 <div style={{ height: '60px' }}>
                     {error && <div className={`alert alert-error transition-opacity duration-500`}>
@@ -107,7 +118,7 @@ const TokenConvert = () => {
                 <textarea
                     className="textarea textarea-info min-w-full"
                     rows={5}
-                    placeholder="Response JSON"
+                    placeholder="Bio"
                     value={jsonText}
                     onChange={(e) => onChangeTextarea(e?.target?.value)}
                 />
@@ -134,7 +145,7 @@ const TokenConvert = () => {
                     <textarea
                         className="textarea textarea-info text-white min-w-full"
                         rows={5}
-                        placeholder="Result"
+                        placeholder="Bio"
                         value={result}
                         readOnly
                     />
@@ -144,4 +155,4 @@ const TokenConvert = () => {
     )
 }
 
-export default TokenConvert
+export default ConvertTextFormat
