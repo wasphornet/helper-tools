@@ -23,9 +23,9 @@ const DeeplinkGenerator = () => {
         if (!basePath || !params) return
         if (isEncrypt) {
             const base64 = btoa(params)
-            setResult(`${basePath}?params=${base64}`)
+            setResult(`${basePath}?data=${base64}`)
         } else {
-            setResult(`${basePath}?params=${params}`)
+            setResult(`${basePath}?data=${params}`)
         }
     }, [basePath, params, isEncrypt])
 
