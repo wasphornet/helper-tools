@@ -10,7 +10,7 @@ import { NavbarStyled, DrawerStyled } from './navbar.styled'
 
 const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
-  // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
+  { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
   { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
   { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' },
   { routeName: 'Convert Text Format', pathname: '/convert-text-format' },
