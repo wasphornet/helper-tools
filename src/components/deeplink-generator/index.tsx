@@ -20,7 +20,13 @@ const DeeplinkGenerator = () => {
     }
 
     useEffect(() => {
-        if (!basePath || !params) return
+        if (!basePath) return
+
+        if (!params) {
+            setResult(basePath)
+            return
+        }
+
         if (isEncrypt) {
             const base64 = btoa(params)
             setResult(`${basePath}?data=${base64}`)
