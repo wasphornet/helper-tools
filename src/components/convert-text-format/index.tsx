@@ -22,15 +22,12 @@ const ConvertTextFormat = () => {
 
         try {
             const data = JSON.parse(jsonText)
-            console.log("🐯 ~ file: index.tsx:25 ~ convertAndClear ~ data:", data)
             if (!data?.customer) {
                 setError(true)
                 return
             }
             const rm_id = data?.customer?.profile?.rm_id
-            console.log("🐯 ~ file: index.tsx:31 ~ convertAndClear ~ rm_id:", rm_id)
             const product_holdings = data?.customer?.product_holdings
-            console.log("🐯 ~ file: index.tsx:33 ~ convertAndClear ~ product_holdings:", product_holdings)
             const { saving_accounts, current_accounts, loan_accounts, hire_purchase_accounts, mutual_fund_accounts, structured_note_accounts } = product_holdings
 
             const merge_array = [

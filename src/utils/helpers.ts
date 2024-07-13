@@ -6,7 +6,6 @@ export const firstUpperCase = (str: string) => {
 }
 
 export const encryptRSA = (value: string) => {
-    console.log("🐯 ~ file: helpers.ts:9 ~ encryptRSA ~ value:", value)
     const JSEncrypt = require('jsencrypt').JSEncrypt
     const encrypt = new JSEncrypt()
     encrypt.setPublicKey(publicKey)

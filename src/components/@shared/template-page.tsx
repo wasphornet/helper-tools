@@ -17,7 +17,6 @@ const MainStyled = tw.main`
 
 const Home = ({ children }: any) => {
     const theme = useSelector((state: RootState) => state.theme.value)
-    console.log("🚀 ~ file: index.tsx:12 ~ Home ~ theme:", theme)
 
     return (
         <div data-theme={theme}>

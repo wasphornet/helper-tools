@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import SaveAsIcon from '@mui/icons-material/SaveAs'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import { decryptRSA, encryptRSA } from 'utils/helpers'
 
 
 const TextareaWithButton = ({
@@ -13,11 +12,8 @@ const TextareaWithButton = ({
 }: any) => {
     
     const saveToLocalStorage = () => {
-        console.log("🐯 ~ file: textarea-with-button.tsx:20 ~ saveToLocalStorage ~ storageKey:", storageKey)
-        console.log("🐯 ~ file: decrypt.tsx:64 ~ saveToLocalStorage ~ value:", value)
         if (!value) return
         const encValue = btoa(value)
-        console.log("🐯 ~ file: decrypt.tsx:67 ~ saveToLocalStorage ~ encValue:", encValue)
         localStorage.setItem(storageKey, encValue)
     }
 
