@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from 'store'
-import { useSelector } from 'react-redux'
 import { initialToaster, clearToaster } from 'reduxs/toast-redux'
 import { toastTypes } from 'utils/constants-value'
 
