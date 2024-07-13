@@ -63,7 +63,7 @@ const DeeplinkGenerator = () => {
         } else {
             setResult(`${basePath}?${joinParams}`)
         }
-    }, [basePath, params, isEncode, isAdvanceMode, JSON.stringify(urlParams)])
+    }, [basePath, params, isEncode, isAdvanceMode, urlParams])
 
     const onChangeURLParams = (index: number, key: string, value: string) => {
         let newParams = [...urlParams]

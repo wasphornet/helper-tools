@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from 'store'
@@ -8,7 +8,7 @@ import { toastTypes } from 'utils/constants-value'
 const ToasterComponent = () => {
     const dispatch = useDispatch()
 
-    let timeout: any = null
+    const timeout = useRef<any>(null)
     const toastProps = useSelector((state: RootState) => state.toaster.value)
     const { show, type, message } = toastProps
     const classNameType = toastTypes[type]
@@ -19,7 +19,7 @@ const ToasterComponent = () => {
 
     useEffect(() => {
         if (show) {
-            timeout = setTimeout(() => {
+            timeout.current = setTimeout(() => {
                 clearToast()
             }, 3000)
         }
@@ -29,7 +29,7 @@ const ToasterComponent = () => {
         dispatch(initialToaster())
 
         return () => {
-            clearTimeout(timeout)
+            clearTimeout(timeout.current)
             clearToast()
         }
     }, [])

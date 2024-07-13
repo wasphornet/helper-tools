@@ -42,7 +42,7 @@ const Navbar = () => {
     if (activePath !== router.pathname) {
       setActivePath(router.pathname)
     }
-  }, [router.pathname])
+  }, [activePath, router.pathname])
 
   useEffect(() => {
     let localTheme = String(localStorage.getItem('theme'))
