@@ -6,7 +6,7 @@ export interface ThemeState {
 }
 
 const initialState: ThemeState = {
-  value: 'dracula',
+  value: 'dracula'
 }
 
 export const themeApp = createSlice({
@@ -15,8 +15,8 @@ export const themeApp = createSlice({
   reducers: {
     setTheme: (state, action: PayloadAction<string>) => {
       state.value = action.payload
-    },
-  },
+    }
+  }
 })
 
 // Action creators are generated for each case reducer function

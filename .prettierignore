@@ -1,0 +1,27 @@
+# skip node_modules
+node_modules
+
+# skip  build / dist
+build
+dist
+
+# skip all file inside folder
+logs/
+.next/
+.husky/
+.idea/
+.swc/
+.firebase/
+coverage/
+nginx-conf/
+node_modules/
+oneapp_primary_banking_web_source/
+public/fonts/
+public/images/
+
+# skip file markdown
+*.md
+
+# skip file some file
+*.min.js
+public/static/eruda.js
