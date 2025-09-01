@@ -4,6 +4,7 @@ import { store } from 'store'
 import { Provider } from 'react-redux'
 import TemplatePage from 'components/@shared/template-page'
 
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>

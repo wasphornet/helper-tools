@@ -1,7 +1,9 @@
 import Component from 'components/deeplink-generator'
 
 const DeeplinkGenerator = () => {
-  return <Component />
+  return (
+    <Component />
+  )
 }
 
 export default DeeplinkGenerator

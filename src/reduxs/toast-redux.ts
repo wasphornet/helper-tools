@@ -3,15 +3,16 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { IStateValue } from './types'
 
 export type ToastTypeProps = {
-  show?: boolean
-  type: 'success' | 'error' | 'info' | 'warning'
-  message?: string | null
+  show?: boolean,
+  type: 'success' | 'error' | 'info' | 'warning',
+  message?: string | null,
 }
+
 
 const initialValue: ToastTypeProps = {
   show: false,
   type: 'success',
-  message: ''
+  message: '',
 }
 
 export const Toaster = createSlice({
@@ -25,7 +26,7 @@ export const Toaster = createSlice({
       state.value = {
         ...state.value,
         ...action.payload,
-        show: true
+        show: true,
       }
     },
     clearToaster: (state) => {
@@ -33,13 +34,17 @@ export const Toaster = createSlice({
         ...state.value,
         show: false,
         type: 'success',
-        message: null
+        message: null,
       }
-    }
-  }
+    },
+  },
 })
 
 // Action creators are generated for each case reducer function
-export const { clearToaster, showToaster, initialToaster } = Toaster.actions
+export const {
+  clearToaster,
+  showToaster,
+  initialToaster
+} = Toaster.actions
 
 export default Toaster.reducer

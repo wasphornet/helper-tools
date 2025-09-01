@@ -1,7 +1,9 @@
 import Component from 'components/convert-text-format'
 
 const DeeplinkGenerator = () => {
-  return <Component />
+    return (
+        <Component />
+    )
 }
 
 export default DeeplinkGenerator

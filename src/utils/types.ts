@@ -1,8 +1,8 @@
 export interface IToastTypes {
-  [key: string]: string
+    [key: string]: string
 }
 
 export interface IToast {
-  text: string
-  type: string
+    text: string
+    type: string
 }

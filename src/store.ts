@@ -5,8 +5,8 @@ import toastReducer from 'reduxs/toast-redux'
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
-    toaster: toastReducer
-  }
+    toaster: toastReducer,
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
