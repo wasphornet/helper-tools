@@ -10,11 +10,9 @@ import { NavbarStyled, DrawerStyled } from './navbar.styled'
 
 const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
-  { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
+  { routeName: 'QR Generator', pathname: '/qr-generator' },
   { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
   { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' }
-  // { routeName: 'Bridge Test', pathname: '/bridge-test' },
-  // { routeName: 'Convert Text Format', pathname: '/convert-text-format' },
 ]
 
 const Navbar = () => {
@@ -105,8 +103,8 @@ const Navbar = () => {
         <input
           type='checkbox'
           className='toggle'
-          checked={checked}
-          onClick={onClickChangeTheme}
+          defaultChecked={checked}
+          onChange={onClickChangeTheme}
           readOnly
         />
       </div>
