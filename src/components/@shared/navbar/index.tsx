@@ -14,7 +14,7 @@ const routerList = [
   // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
   { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
   { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' },
-  { routeName: 'JSON to Typescript', pathname: '/json-to-typescript' }
+  { routeName: 'JSON to Interface(DEMO)', pathname: '/json-to-interface' }
 ]
 
 const Navbar = () => {
