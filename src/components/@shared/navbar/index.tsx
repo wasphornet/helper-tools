@@ -11,8 +11,10 @@ import { NavbarStyled, DrawerStyled } from './navbar.styled'
 const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
   { routeName: 'QR Generator', pathname: '/qr-generator' },
+  // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
   { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
-  { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' }
+  { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' },
+  { routeName: 'JSON to Typescript', pathname: '/json-to-typescript' }
 ]
 
 const Navbar = () => {
