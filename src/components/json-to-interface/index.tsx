@@ -11,8 +11,22 @@ const JsonToInterface = () => {
     for (const key in obj) {
       const value = obj[key]
       let valueType: any = typeof value
-      if (!value && (value !== '0' || value !== 0 || value !== '')) {
-        valueType = 'any'
+      if (!value) {
+        switch (value) {
+          case '':
+          case '0':
+            valueType = 'string'
+            break
+          case 0:
+            valueType = 'number'
+            break
+          case false:
+            valueType = 'boolean'
+            break
+          default:
+            valueType = 'any'
+            break
+        }
       } else if (Array.isArray(value)) {
         if (value.length > 0) {
           if (typeof value[0] === 'object') {
