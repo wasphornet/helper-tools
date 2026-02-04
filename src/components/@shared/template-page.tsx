@@ -1,4 +1,3 @@
-
 import Navbar from './navbar'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store'
@@ -16,16 +15,14 @@ const MainStyled = tw.main`
 `
 
 const Home = ({ children }: any) => {
-    const theme = useSelector((state: RootState) => state.theme.value)
+  const theme = useSelector((state: RootState) => state.theme.value)
 
-    return (
-        <div data-theme={theme}>
-            <Navbar />
-            <MainStyled>
-                {children}
-            </MainStyled>
-        </div>
-    )
+  return (
+    <div data-theme={theme}>
+      <Navbar />
+      <MainStyled>{children}</MainStyled>
+    </div>
+  )
 }
 
 export default Home

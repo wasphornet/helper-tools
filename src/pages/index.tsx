@@ -1,10 +1,7 @@
 import Component from 'components/token-convert'
 
-
 const ConvertToken = () => {
-    return (
-        <Component />
-    )
+  return <Component />
 }
 
 export default ConvertToken

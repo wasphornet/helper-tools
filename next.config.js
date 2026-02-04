@@ -1,9 +1,10 @@
+const path = require('path')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: process.env.NEXT_OUTPUT_MODE,
   env: {
     RSA_PRIVATE_KEY: process.env.RSA_PRIVATE_KEY,
-    NEXT_PUBLIC_RSA_PUBLIC_KEY: process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY,
+    NEXT_PUBLIC_RSA_PUBLIC_KEY: process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY
   },
 
   /**
@@ -13,19 +14,20 @@ const nextConfig = {
    * @returns {import('webpack').Configuration}
    */
   webpack: (config) => {
-    if (process.env.NEXT_OUTPUT_MODE !== "export" || !config.module) {
+    if (process.env.NEXT_OUTPUT_MODE !== 'export' || !config.module) {
       return config
     }
     config.module.rules?.push({
       test: /src\/pages\/api/,
-      loader: "ignore-loader",
+      loader: 'ignore-loader'
     })
     return config
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV !== "development",
+    removeConsole: process.env.NODE_ENV !== 'development'
   },
-  turbopack: {}
+  turbopack: {
+    root: path.join(__dirname, '..')
+  }
 }
 module.exports = nextConfig
-
