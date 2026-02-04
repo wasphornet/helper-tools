@@ -5,6 +5,18 @@ export const firstUpperCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+export const snakeToPascal = (string: string) => {
+  return string
+    .split('/')
+    .map((snake) =>
+      snake
+        .split('_')
+        .map((substr) => substr.charAt(0).toUpperCase() + substr.slice(1))
+        .join('')
+    )
+    .join('/')
+}
+
 export const encryptRSA = (value: string) => {
   const JSEncrypt = require('jsencrypt').JSEncrypt
   const encrypt = new JSEncrypt()

@@ -1,28 +1,19 @@
 import { useEffect, useState } from 'react'
 import QRCode from 'react-qr-code'
-import { firstUpperCase } from 'utils/helpers'
+import { snakeToPascal } from 'utils/helpers'
 
 const JsonToInterface = () => {
   const [value, setValue] = useState<string>()
   const [result, setResult] = useState<string>()
 
-  const snakeToPascal = (string: string) => {
-    return string
-      .split('/')
-      .map((snake) =>
-        snake
-          .split('_')
-          .map((substr) => substr.charAt(0).toUpperCase() + substr.slice(1))
-          .join('')
-      )
-      .join('/')
-  }
   const createInterfaceFromObject = (obj: any, interfaceName: string): string => {
     let interfaceString = `interface ${interfaceName} {\n`
     for (const key in obj) {
       const value = obj[key]
       let valueType: any = typeof value
-      if (Array.isArray(value)) {
+      if (!value && (value !== '0' || value !== 0 || value !== '')) {
+        valueType = 'any'
+      } else if (Array.isArray(value)) {
         if (value.length > 0) {
           if (typeof value[0] === 'object') {
             const childInterfaceName = `${interfaceName}${snakeToPascal(key)}Item`
@@ -37,7 +28,7 @@ const JsonToInterface = () => {
         }
       } else if (valueType === 'object' && value !== null) {
         const childInterfaceName = `${interfaceName}${snakeToPascal(key)}`
-        interfaceString += createInterfaceFromObject(value, childInterfaceName)
+        interfaceString = createInterfaceFromObject(value, childInterfaceName) + interfaceString
         valueType = childInterfaceName
       }
       interfaceString += `  ${key}: ${valueType}\n`
