@@ -10,6 +10,7 @@ import { NavbarStyled, DrawerStyled } from './navbar.styled'
 
 const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
+  { routeName: 'Encode/Decode Base64', pathname: '/base64' },
   { routeName: 'QR Generator', pathname: '/qr-generator' },
   // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
   { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
@@ -100,14 +101,17 @@ const Navbar = () => {
       <div>
         <p className='text-2xl'>Helpers tools</p>
       </div>
-      <div className='ml-auto'>
-        <span className='label-text mr-5 font-bold'>{firstUpperCase(theme)}</span>
+      <div className='ml-auto flex items-center'>
+        <label htmlFor='theme-toggle' className='label-text mr-5 font-bold cursor-pointer'>
+          {firstUpperCase(theme)}
+        </label>
         <input
+          id='theme-toggle'
           type='checkbox'
           className='toggle'
-          defaultChecked={checked}
+          checked={checked}
           onChange={onClickChangeTheme}
-          readOnly
+          aria-label={`Switch to ${theme === themeSite.dark ? 'light' : 'dark'} theme`}
         />
       </div>
     </NavbarStyled>
