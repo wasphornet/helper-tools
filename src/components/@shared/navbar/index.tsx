@@ -13,8 +13,7 @@ const routerList = [
   { routeName: 'Encode/Decode Base64', pathname: '/base64' },
   { routeName: 'QR Generator', pathname: '/qr-generator' },
   // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
-  { routeName: 'Encrypt RSA', pathname: '/rsa/encrypt' },
-  { routeName: 'Decrypt RSA', pathname: '/rsa/decrypt' },
+  { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa' },
   { routeName: 'JSON to Interface(DEMO)', pathname: '/json-to-interface' }
 ]
 
