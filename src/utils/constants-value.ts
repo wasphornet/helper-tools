@@ -13,3 +13,5 @@ export const toastTypes: types.IToastTypes = {
   info: 'btn btn-info',
   warning: 'btn btn-warning'
 }
+
+export const RSA_KEY_STORAGE_KEY = 'rsa-key'

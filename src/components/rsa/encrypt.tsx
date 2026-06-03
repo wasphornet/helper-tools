@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import JSEncrypt from 'jsencrypt'
 import TextareaWithButton from 'components/@shared/textarea-with-button'
+import { RSA_KEY_STORAGE_KEY } from 'utils/constants-value'
 
 const EncryptRSA = () => {
   const encrypt = new JSEncrypt()
-  const key = 'qrE9K'
 
   const [encryptKey, setEncryptKey] = useState<string>('')
   const [encryptValue, setEncryptValue] = useState<string>('')
@@ -40,8 +40,8 @@ const EncryptRSA = () => {
       <div id='content-wrapper' className='grid gap-5 my-5 pt-3'>
         <p className='text-l'>Encrypt Key</p>
         <TextareaWithButton
-          key={key}
-          storageKey={key}
+          key={RSA_KEY_STORAGE_KEY}
+          storageKey={RSA_KEY_STORAGE_KEY}
           rows={3}
           value={encryptKey}
           placeholder='Encrypt Key'

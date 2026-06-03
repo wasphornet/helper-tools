@@ -5,11 +5,11 @@ import JSEncrypt from 'jsencrypt'
 import { showToaster } from 'reduxs/toast-redux'
 import Toaster from 'components/@shared/toaster'
 import TextareaWithButton from 'components/@shared/textarea-with-button'
+import { RSA_KEY_STORAGE_KEY } from 'utils/constants-value'
 
 const DecryptRSA = () => {
   const dispatch = useDispatch()
   const encrypt = new JSEncrypt()
-  const key = 'u5CBn'
 
   const [decryptValue, setDecryptValue] = useState<string>('')
   const [decryptKey, setDecryptKey] = useState<string>('')
@@ -67,8 +67,8 @@ const DecryptRSA = () => {
       <div id='content-wrapper' className='grid gap-5 my-5 pt-3'>
         <p className='text-l'>Decrypt Key</p>
         <TextareaWithButton
-          key={key}
-          storageKey={key}
+          key={RSA_KEY_STORAGE_KEY}
+          storageKey={RSA_KEY_STORAGE_KEY}
           rows={3}
           value={decryptKey}
           placeholder='Decrypt Key'
