@@ -267,7 +267,7 @@ const TermAndConditionGenerator = () => {
   useEffect(() => {}, [textArray])
 
   return (
-    <div id='deeplink-generator-wrapper' className='min-w-full grid gap-5 my-5'>
+    <div id='t-and-c-generator-wrapper' className='min-w-full grid gap-5 my-5'>
       <div className='flex gap-5' style={{ minHeight: '500px' }}>
         <div className='w-6/12 h-full'>
           <p className='text-l pb-3'>HTML Code</p>
