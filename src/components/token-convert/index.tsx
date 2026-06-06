@@ -12,6 +12,7 @@ const TokenConvert = () => {
 
   const convertAndClear = () => {
     if (!jsonText) return
+    setResult('')
 
     try {
       const json = JSON.parse(jsonText)

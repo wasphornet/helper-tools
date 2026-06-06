@@ -6,10 +6,8 @@ export const useActiveRoute = () => {
   const [activePath, setActivePath] = useState(router.pathname)
 
   useEffect(() => {
-    if (activePath !== router.pathname) {
-      setActivePath(router.pathname)
-    }
-  }, [activePath, router.pathname])
+    setActivePath(router.pathname)
+  }, [router.pathname])
 
   const navigateTo = (pathname: string) => {
     router.push(pathname)

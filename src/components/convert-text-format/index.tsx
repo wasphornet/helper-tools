@@ -12,6 +12,7 @@ const ConvertTextFormat = () => {
 
   const convertAndClear = () => {
     if (!jsonText) return
+    setResult('')
 
     try {
       const data = JSON.parse(jsonText)

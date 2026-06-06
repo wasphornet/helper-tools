@@ -18,7 +18,7 @@ const tabs = [
     value: 'decrypt',
     renderContent: (rsaKey: string) => <DecryptRSA decryptKey={rsaKey} />
   }
-]
+] as const
 type Tab = (typeof tabs)[number]['value']
 
 const RSATool = () => {
