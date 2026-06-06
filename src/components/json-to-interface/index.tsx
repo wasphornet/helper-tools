@@ -68,7 +68,7 @@ const JsonToInterface = () => {
   return (
     <div
       id='json-to-typescript-wrapper'
-      className='min-w-full grid md:flex-col md:grid-cols-10 gap-5'
+      className='min-w-full grid grid-cols-1 md:grid-cols-10 gap-5'
     >
       <div className='col-span-5 flex flex-col'>
         <p className='text-lg mb-2'>JSON Value</p>
