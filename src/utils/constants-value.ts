@@ -1,5 +1,7 @@
 import * as types from './types'
 
+export const RSA_KEY_STORAGE_KEY = 'n6GTpmVjp3'
+
 export const themeSite = {
   dark: 'dracula',
   light: 'garden'
@@ -14,4 +16,11 @@ export const toastTypes: types.IToastTypes = {
   warning: 'btn btn-warning'
 }
 
-export const RSA_KEY_STORAGE_KEY = 'n6GTpmVjp3'
+export const routerList = [
+  { routeName: 'Token Convert', pathname: '/' },
+  { routeName: 'QR Generator', pathname: '/qr-generator' },
+  { routeName: 'Encode/Decode Base64', pathname: '/base64' },
+  { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa-tool' },
+  { routeName: 'JSON to Interface', pathname: '/json-to-interface' }
+  // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
+]
