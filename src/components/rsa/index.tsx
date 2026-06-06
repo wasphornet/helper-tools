@@ -45,7 +45,7 @@ const RSATool = () => {
             rows={3}
             value={rsaKey}
             placeholder='Encrypt Key'
-            onChange={(value: Tab) => setRsaKey(value)}
+            onChange={(value: string) => setRsaKey(value)}
           />
         </div>
       </div>
