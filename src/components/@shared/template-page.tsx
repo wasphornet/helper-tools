@@ -30,7 +30,7 @@ const Home = ({ children }: any) => {
       <Navbar />
       <Toaster />
       <ContentStyled>
-        {pageTitle && <p className='text-xl mb-5'>{pageTitle}</p>}
+        {pageTitle && <h1 className='text-xl mb-5'>{pageTitle}</h1>}
         {children}
       </ContentStyled>
     </ContainerStyled>

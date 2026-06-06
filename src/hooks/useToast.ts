@@ -1,17 +1,14 @@
 import { useDispatch } from 'react-redux'
-import { showToaster } from 'reduxs/toast-redux'
-
-type ToastType = 'success' | 'error' | 'info' | 'warning'
+import { showToaster, ToastTypeProps } from 'reduxs/toast-redux'
 
 export const useToast = () => {
   const dispatch = useDispatch()
 
-  const showToast = (message: string, type: ToastType = 'info') => {
+  const showToast = (message: string, type: ToastTypeProps['type'] = 'info') => {
     dispatch(
       showToaster({
         type,
-        message,
-        show: true
+        message
       })
     )
   }

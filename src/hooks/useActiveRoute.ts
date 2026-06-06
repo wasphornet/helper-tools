@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 export const useActiveRoute = () => {
   const router = useRouter()
-  const [activePath, setActivePath] = useState('/')
+  const [activePath, setActivePath] = useState(router.pathname)
 
   useEffect(() => {
     if (activePath !== router.pathname) {
