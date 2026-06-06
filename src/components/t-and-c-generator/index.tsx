@@ -286,14 +286,7 @@ const TermAndConditionGenerator = () => {
       </div>
       {/* <div id="preview" className="border rounded p-5" style={{ minHeight: '150px' }}>
                 </div> */}
-      <div className='pt-10'>
-        <textarea
-          className='textarea textarea-primary w-full'
-          placeholder='T&C'
-          onChange={(e) => handleTextAreaChange(e?.target?.value)}
-          rows={10}
-        />
-      </div>
+      
       {/* <div id="button-wrapper" className="flex justify-end">
                     <button className="btn btn-primary" onClick={() => {
                         const previewEle = document.getElementById('preview')
