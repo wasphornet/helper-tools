@@ -24,12 +24,20 @@ type Tab = (typeof tabs)[number]['value']
 const RSATool = () => {
   const [activeTab, setActiveTab] = useState<Tab>(tabs[0].value as Tab)
   const [rsaKey, setRsaKey] = useState<string>('')
+  const [isCollapseOpen, setIsCollapseOpen] = useState<boolean>(false)
 
   return (
     <div id='rsa-wrapper' className='min-w-full grid gap-5 my-5'>
       <div className='collapse bg-base-300 border border-base-300'>
-        <input type='checkbox' />
-        <div className='collapse-title font-semibold'>Encrypt Key</div>
+        <input
+          type='checkbox'
+          checked={isCollapseOpen}
+          onChange={(e) => setIsCollapseOpen(e.target.checked)}
+        />
+        <div className='collapse-title font-semibold flex items-center gap-2'>
+          <span>Encrypt Key</span>
+          {isCollapseOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </div>
         <div className='collapse-content'>
           <TextareaWithButton
             key={RSA_KEY_STORAGE_KEY}
