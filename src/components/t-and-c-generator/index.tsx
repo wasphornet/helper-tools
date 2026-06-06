@@ -267,38 +267,27 @@ const TermAndConditionGenerator = () => {
   useEffect(() => {}, [textArray])
 
   return (
-    <div id='deeplink-generator-wrapper' className='min-w-full'>
-      <p className='text-xl'>Term and condition Generator</p>
-      <div id='content-wrapper' className='grid gap-5 my-5'>
-        <div className='flex gap-5' style={{ minHeight: '500px' }}>
-          <div className='w-6/12 h-full'>
-            <p className='text-l pb-3'>HTML Code</p>
-            <textarea
-              className='textarea textarea-primary h-full w-full'
-              placeholder='T&C'
-              onChange={(e) => handleTextAreaChange(e?.target?.value)}
-            />
-          </div>
-          <div id='preview' className='w-6/12 h-full'>
-            <p className='text-l pb-3'>Preview</p>
-            <div className='p-5 border rounded h-full'>
-              <TermsAndConditionsPreviewStyle>
-                {parse(htmlText)}
-              </TermsAndConditionsPreviewStyle>
-            </div>
-          </div>
-        </div>
-        {/* <div id="preview" className="border rounded p-5" style={{ minHeight: '150px' }}>
-                </div> */}
-        <div className='pt-10'>
+    <div id='t-and-c-generator-wrapper' className='min-w-full grid gap-5 my-5'>
+      <div className='flex gap-5' style={{ minHeight: '500px' }}>
+        <div className='w-6/12 h-full'>
+          <p className='text-l pb-3'>HTML Code</p>
           <textarea
-            className='textarea textarea-primary w-full'
+            className='textarea textarea-primary h-full w-full'
             placeholder='T&C'
             onChange={(e) => handleTextAreaChange(e?.target?.value)}
-            rows={10}
           />
         </div>
-        {/* <div id="button-wrapper" className="flex justify-end">
+        <div id='preview' className='w-6/12 h-full'>
+          <p className='text-l pb-3'>Preview</p>
+          <div className='p-5 border rounded h-full'>
+            <TermsAndConditionsPreviewStyle>{parse(htmlText)}</TermsAndConditionsPreviewStyle>
+          </div>
+        </div>
+      </div>
+      {/* <div id="preview" className="border rounded p-5" style={{ minHeight: '150px' }}>
+                </div> */}
+      
+      {/* <div id="button-wrapper" className="flex justify-end">
                     <button className="btn btn-primary" onClick={() => {
                         const previewEle = document.getElementById('preview')
                         if (previewEle) {
@@ -306,7 +295,6 @@ const TermAndConditionGenerator = () => {
                         }
                     }}>Preview</button>
                 </div> */}
-      </div>
     </div>
   )
 }

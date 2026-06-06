@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import JSEncrypt from 'jsencrypt'
 
 import { showToaster } from 'reduxs/toast-redux'
-import Toaster from 'components/@shared/toaster'
 
 interface DecryptRSAProps {
   decryptKey: string
@@ -60,8 +59,7 @@ const DecryptRSA = ({ decryptKey }: DecryptRSAProps) => {
 
   return (
     <div id='token-convert-wrapper' className='min-w-full'>
-      <Toaster />
-      <div id='content-wrapper' className='grid gap-5 py-5'>
+      <div id='content-wrapper' className='grid gap-5'>
         <p className='text-l'>Decrypt Value</p>
         <textarea
           className='textarea textarea-info min-w-full'

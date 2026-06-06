@@ -111,105 +111,103 @@ const DeeplinkGenerator = () => {
   }
 
   return (
-    <div id='deeplink-generator-wrapper' className='min-w-full'>
-      <p className='text-xl'>QR Deeplink Generator</p>
-      <div id='content-wrapper' className='my-5'>
-        <div id='basic-options'>
-          <div className='md:grid grid-cols-10 gap-5 pt-3'>
-            <div className='col-span-6 flex flex-col'>
-              <p className='text-lg mb-2'>Result path {isAdvanceMode && '(Not Edit)'}</p>
-              <textarea
-                className='textarea textarea-info min-w-full h-full'
-                placeholder='Result path'
-                rows={5}
-                value={result}
-                onChange={(e) => onChangeValue('result', e?.target?.value)}
-                readOnly={isAdvanceMode}
-              />
-            </div>
+    <div id='deeplink-generator-wrapper' className='min-w-full grid gap-5 my-5'>
+      <div id='basic-options'>
+        <div className='md:grid grid-cols-10 gap-5 pt-3'>
+          <div className='col-span-6 flex flex-col'>
+            <p className='text-lg mb-2'>Result path {isAdvanceMode && '(Not Edit)'}</p>
+            <textarea
+              className='textarea textarea-info min-w-full h-full'
+              placeholder='Result path'
+              rows={5}
+              value={result}
+              onChange={(e) => onChangeValue('result', e?.target?.value)}
+              readOnly={isAdvanceMode}
+            />
+          </div>
 
-            <div className='col-span-4 flex flex-col text-center'>
-              <p className='text-lg mb-2'>Preview QR Code</p>
-              <div className={`w-auto h-full flex justify-center`}>
-                {result && (
-                  <div className='bg-white p-3'>
-                    <QRCode className='w-auto h-full' value={result} />
-                  </div>
-                )}
-              </div>
+          <div className='col-span-4 flex flex-col text-center'>
+            <p className='text-lg mb-2'>Preview QR Code</p>
+            <div className={`w-auto h-full flex justify-center`}>
+              {result && (
+                <div className='bg-white p-3'>
+                  <QRCode className='w-auto h-full' value={result} />
+                </div>
+              )}
             </div>
           </div>
+        </div>
+        <div className='flex'>
+          <label className='label cursor-pointer gap-3 px-0'>
+            <span className='label-text'>Advance mode</span>
+            <input
+              type='checkbox'
+              className='toggle'
+              checked={isAdvanceMode}
+              onChange={(e) => {
+                const next = e.target.checked
+                setIsAdvanceMode(next)
+                setBasePath('')
+                setParams('')
+                setUrlParams([{ key: '', value: '' }])
+              }}
+            />
+          </label>
+        </div>
+      </div>
+      {isAdvanceMode && (
+        <div id='advance-options' className='my-5'>
+          <div className='mb-3'>
+            <p className='text-lg mb-3'>Base path</p>
+            <input
+              type='text'
+              placeholder='Base path'
+              className='input input-bordered w-full'
+              value={basePath}
+              onChange={(e) => onChangeValue('basePath', e?.target?.value)}
+            />
+          </div>
+
           <div className='flex'>
             <label className='label cursor-pointer gap-3 px-0'>
-              <span className='label-text'>Advance mode</span>
+              <span className='label-text'>Encode Params to Base 64</span>
               <input
                 type='checkbox'
                 className='toggle'
-                checked={isAdvanceMode}
-                onClick={() => {
-                  setIsAdvanceMode(!isAdvanceMode)
-                  setBasePath('')
-                  setParams('')
-                  setUrlParams([{ key: '', value: '' }])
-                }}
+                checked={isEncode}
+                onChange={(e) => setIsEncode(e.target.checked)}
               />
             </label>
           </div>
-        </div>
-        {isAdvanceMode && (
-          <div id='advance-options' className='my-5'>
-            <div className='mb-3'>
-              <p className='text-lg mb-3'>Base path</p>
+          <div className='grid grid-cols-2 gap-5'>
+            <div>
+              <p className='text-lg mb-3'>
+                Params (Not Accept url link in params use &apos;URL Params&apos; instead)
+              </p>
               <input
                 type='text'
-                placeholder='Base path'
+                placeholder='Params'
                 className='input input-bordered w-full'
-                value={basePath}
-                onChange={(e) => onChangeValue('basePath', e?.target?.value)}
+                value={params}
+                onChange={(e) => onChangeValue('params', e?.target?.value)}
               />
             </div>
+            <div>
+              <div className='flex justify-start align-middle gap-3'>
+                <p className='text-lg mb-3'>URL Params</p>
+                <button className='btn btn-sm btn-success ' onClick={() => addURLParam()}>
+                  <AddIcon />
+                </button>
 
-            <div className='flex'>
-              <label className='label cursor-pointer gap-3 px-0'>
-                <span className='label-text'>Encode Params to Base 64</span>
-                <input
-                  type='checkbox'
-                  className='toggle'
-                  checked={isEncode}
-                  onClick={() => setIsEncode(!isEncode)}
-                />
-              </label>
-            </div>
-            <div className='grid grid-cols-2 gap-5'>
-              <div>
-                <p className='text-lg mb-3'>
-                  Params (Not Accept url link in params use &apos;URL Params&apos; instead)
-                </p>
-                <input
-                  type='text'
-                  placeholder='Params'
-                  className='input input-bordered w-full'
-                  value={params}
-                  onChange={(e) => onChangeValue('params', e?.target?.value)}
-                />
+                <button className='btn btn-sm btn-error ' onClick={() => removeLastURLParam()}>
+                  <RemoveIcon />
+                </button>
               </div>
-              <div>
-                <div className='flex justify-start align-middle gap-3'>
-                  <p className='text-lg mb-3'>URL Params</p>
-                  <button className='btn btn-sm btn-success ' onClick={() => addURLParam()}>
-                    <AddIcon />
-                  </button>
-
-                  <button className='btn btn-sm btn-error ' onClick={() => removeLastURLParam()}>
-                    <RemoveIcon />
-                  </button>
-                </div>
-                {generateParamsInput()}
-              </div>
+              {generateParamsInput()}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

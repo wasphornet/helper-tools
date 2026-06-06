@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
 
 import { setTheme } from 'reduxs/theme-redux'
 import { RootState } from 'store'
-import { themeSite } from 'utils/constants-value'
+import { themeSite, routerList } from 'utils/constants-value'
 import { firstUpperCase } from 'utils/helpers'
+import { useActiveRoute } from 'hooks/useActiveRoute'
 import { NavbarStyled, DrawerStyled } from './navbar.styled'
-
-const routerList = [
-  { routeName: 'Token Convert', pathname: '/' },
-  { routeName: 'QR Generator', pathname: '/qr-generator' },
-  { routeName: 'Encode/Decode Base64', pathname: '/base64' },
-  { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa-tool' },
-  { routeName: 'JSON to Interface', pathname: '/json-to-interface' }
-  // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
-]
 
 const Navbar = () => {
   const dispatch = useDispatch()
-  const router = useRouter()
+  const { activePath, navigateTo } = useActiveRoute()
   const theme = useSelector((state: RootState) => state.theme.value)
   const [checked, setChecked] = useState(false)
-  const [activePath, setActivePath] = useState('/')
 
   const onClickChangeTheme = () => {
     let newTheme
@@ -40,22 +30,12 @@ const Navbar = () => {
   }, [theme])
 
   useEffect(() => {
-    if (activePath !== router.pathname) {
-      setActivePath(router.pathname)
-    }
-  }, [activePath, router.pathname])
-
-  useEffect(() => {
     let localTheme = String(localStorage.getItem('theme'))
     if (localTheme !== themeSite.dark && localTheme !== themeSite.light) {
       localTheme = 'dracula'
     }
     dispatch(setTheme(localTheme))
   }, [])
-
-  const navigateTo = (pathname: string) => {
-    router.push(pathname)
-  }
 
   return (
     <NavbarStyled>
