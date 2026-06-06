@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import ReactHtmlParser from 'react-html-parser'
+import parse from 'html-react-parser'
 
 const TermsAndConditionsPreviewStyle = styled.div`
   body #tc-list-section,
@@ -283,7 +283,7 @@ const TermAndConditionGenerator = () => {
             <p className='text-l pb-3'>Preview</p>
             <div className='p-5 border rounded h-full'>
               <TermsAndConditionsPreviewStyle>
-                {ReactHtmlParser(htmlText)}
+                {parse(htmlText)}
               </TermsAndConditionsPreviewStyle>
             </div>
           </div>

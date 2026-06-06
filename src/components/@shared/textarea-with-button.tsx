@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import SaveAsIcon from '@mui/icons-material/SaveAs'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import { secureGet, secureRemove, secureSet } from 'utils/secureStorage'
 
 const TextareaWithButton = ({
   storageKey,
@@ -9,23 +10,20 @@ const TextareaWithButton = ({
   rows = 3,
   placeholder = 'enter value'
 }: any) => {
-  const saveToLocalStorage = () => {
+  const saveToLocalStorage = async () => {
     if (!value) return
-    const encValue = btoa(value)
-    localStorage.setItem(storageKey, encValue)
+    await secureSet(storageKey, value)
   }
 
   const onClearLocalStorage = () => {
-    localStorage.removeItem(storageKey)
+    secureRemove(storageKey)
     onChange('')
   }
 
   useEffect(() => {
-    const localValue = localStorage.getItem(storageKey)
-    if (localValue) {
-      const decValue = atob(localValue)
-      onChange(decValue)
-    }
+    secureGet(storageKey).then((stored) => {
+      if (stored) onChange(stored)
+    })
   }, [])
 
   return (
