@@ -144,8 +144,9 @@ const DeeplinkGenerator = () => {
               type='checkbox'
               className='toggle'
               checked={isAdvanceMode}
-              onClick={() => {
-                setIsAdvanceMode(!isAdvanceMode)
+              onChange={(e) => {
+                const next = e.target.checked
+                setIsAdvanceMode(next)
                 setBasePath('')
                 setParams('')
                 setUrlParams([{ key: '', value: '' }])
