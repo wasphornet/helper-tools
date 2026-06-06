@@ -12,8 +12,8 @@ const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
   { routeName: 'QR Generator', pathname: '/qr-generator' },
   { routeName: 'Encode/Decode Base64', pathname: '/base64' },
-  { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa' },
-  { routeName: 'JSON to Interface(DEMO)', pathname: '/json-to-interface' }
+  { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa-tool' },
+  { routeName: 'JSON to Interface', pathname: '/json-to-interface' }
   // { routeName: 'Deeplink Generator', pathname: '/deeplink-generator' },
 ]
 

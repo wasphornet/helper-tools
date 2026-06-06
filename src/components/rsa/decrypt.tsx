@@ -4,22 +4,20 @@ import JSEncrypt from 'jsencrypt'
 
 import { showToaster } from 'reduxs/toast-redux'
 import Toaster from 'components/@shared/toaster'
-import TextareaWithButton from 'components/@shared/textarea-with-button'
-import { RSA_KEY_STORAGE_KEY } from 'utils/constants-value'
 
-const DecryptRSA = () => {
+interface DecryptRSAProps {
+  decryptKey: string
+}
+
+const DecryptRSA = ({ decryptKey }: DecryptRSAProps) => {
   const dispatch = useDispatch()
   const encrypt = new JSEncrypt()
 
   const [decryptValue, setDecryptValue] = useState<string>('')
-  const [decryptKey, setDecryptKey] = useState<string>('')
   const [decryptResult, setDecryptResult] = useState<string>('')
 
   const setChangeValue = (key: string, text: string) => {
     switch (key) {
-      case 'decryptKey':
-        setDecryptKey(text)
-        break
       case 'decryptValue':
         setDecryptValue(text)
         break
@@ -63,17 +61,7 @@ const DecryptRSA = () => {
   return (
     <div id='token-convert-wrapper' className='min-w-full'>
       <Toaster />
-      <p className='text-xl'>Decrypt RSA</p>
-      <div id='content-wrapper' className='grid gap-5 my-5 pt-3'>
-        <p className='text-l'>Decrypt Key</p>
-        <TextareaWithButton
-          key={RSA_KEY_STORAGE_KEY}
-          storageKey={RSA_KEY_STORAGE_KEY}
-          rows={3}
-          value={decryptKey}
-          placeholder='Decrypt Key'
-          onChange={(value: any) => setChangeValue('decryptKey', value)}
-        />
+      <div id='content-wrapper' className='grid gap-5 py-5'>
         <p className='text-l'>Decrypt Value</p>
         <textarea
           className='textarea textarea-info min-w-full'
@@ -95,7 +83,7 @@ const DecryptRSA = () => {
           <textarea
             className='textarea textarea-info text-white min-w-full'
             rows={3}
-            placeholder='Encrypt Result'
+            placeholder='Decrypt Result'
             value={decryptResult}
             readOnly
           />
