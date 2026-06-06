@@ -2,7 +2,7 @@ import { useState } from 'react'
 import QRCode from 'react-qr-code'
 
 const QRGenerator = () => {
-  const [result, setResult] = useState<string>()
+  const [result, setResult] = useState<string>('')
 
   return (
     <div id='qr-generator-wrapper' className='min-w-full md:grid grid-cols-10 gap-5'>
