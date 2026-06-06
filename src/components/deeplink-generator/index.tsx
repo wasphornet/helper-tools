@@ -175,7 +175,7 @@ const DeeplinkGenerator = () => {
                 type='checkbox'
                 className='toggle'
                 checked={isEncode}
-                onClick={() => setIsEncode(!isEncode)}
+                onChange={(e) => setIsEncode(e.target.checked)}
               />
             </label>
           </div>
