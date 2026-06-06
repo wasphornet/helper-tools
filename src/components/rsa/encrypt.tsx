@@ -34,7 +34,7 @@ const EncryptRSA = ({ encryptKey }: EncryptRSAProps) => {
 
   return (
     <div id='token-convert-wrapper' className='min-w-full'>
-      <div id='content-wrapper' className='grid gap-5 py-5'>
+      <div id='content-wrapper' className='grid gap-5'>
         <p className='text-l'>Encrypt Value</p>
         <textarea
           className='textarea textarea-info min-w-full'

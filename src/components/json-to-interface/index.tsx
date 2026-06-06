@@ -66,34 +66,30 @@ const JsonToInterface = () => {
   }, [value])
 
   return (
-    <div id='json-to-typescript-wrapper' className='min-w-full'>
-      <p className='text-xl'>Json to Typescript(Demo)</p>
-      <div id='content-wrapper' className='my-5'>
-        <div id='basic-options'>
-          <div className='md:grid grid-cols-10 gap-5 pt-3'>
-            <div className='col-span-5 flex flex-col'>
-              <p className='text-lg mb-2'>JSON Value</p>
-              <textarea
-                className='textarea textarea-info min-w-full h-full'
-                placeholder='JSON Value'
-                rows={20}
-                value={value}
-                onChange={(e) => setValue(e?.target?.value || '')}
-              />
-            </div>
+    <div
+      id='json-to-typescript-wrapper'
+      className='min-w-full grid md:flex-col md:grid-cols-10 gap-5'
+    >
+      <div className='col-span-5 flex flex-col'>
+        <p className='text-lg mb-2'>JSON Value</p>
+        <textarea
+          className='textarea textarea-info min-w-full h-full'
+          placeholder='JSON Value'
+          rows={20}
+          value={value}
+          onChange={(e) => setValue(e?.target?.value || '')}
+        />
+      </div>
 
-            <div className='col-span-5 flex flex-col'>
-              <p className='text-lg mb-2'>Interface result</p>
-              <textarea
-                className='textarea textarea-info min-w-full h-full'
-                placeholder='Interface result'
-                rows={20}
-                value={result}
-                readOnly
-              />
-            </div>
-          </div>
-        </div>
+      <div className='col-span-5 flex flex-col'>
+        <p className='text-lg mb-2'>Interface result</p>
+        <textarea
+          className='textarea textarea-info min-w-full h-full'
+          placeholder='Interface result'
+          rows={20}
+          value={result}
+          readOnly
+        />
       </div>
     </div>
   )
