@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { decodeURIString, encodeURIString } from 'utils/helpers'
 import { useToast } from 'hooks/useToast'
 
-const URITool = () => {
+const URLTool = () => {
   const [input, setInput] = useState<string>('')
   const [output, setOutput] = useState<string>('')
   const toast = useToast()
@@ -16,7 +16,7 @@ const URITool = () => {
     if (!input) return
     const result = decodeURIString(input)
     if (result === null) {
-      toast.error('Invalid URI string')
+      toast.error('Invalid URL string')
       setOutput('')
       return
     }
@@ -24,11 +24,11 @@ const URITool = () => {
   }
 
   return (
-    <div id='uri-wrapper' className='min-w-full grid gap-5 my-5'>
+    <div id='url-wrapper' className='min-w-full grid gap-5 my-5'>
       <textarea
         className='textarea textarea-info min-w-full'
         rows={5}
-        placeholder='Input text or URI'
+        placeholder='Input text or URL'
         value={input}
         onChange={(e) => {
           setInput(e.target.value)
@@ -53,4 +53,4 @@ const URITool = () => {
   )
 }
 
-export default URITool
+export default URLTool
