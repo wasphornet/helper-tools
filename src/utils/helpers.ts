@@ -48,3 +48,15 @@ export const decodeBase64 = (value: string): string | null => {
     return null
   }
 }
+
+export const encodeURIString = (value: string): string => {
+  return encodeURI(value)
+}
+
+export const decodeURIString = (value: string): string | null => {
+  try {
+    return decodeURI(value)
+  } catch {
+    return null
+  }
+}

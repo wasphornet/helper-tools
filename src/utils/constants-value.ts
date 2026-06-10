@@ -20,6 +20,7 @@ export const routerList = [
   { routeName: 'Token Convert', pathname: '/' },
   { routeName: 'QR Generator', pathname: '/qr-generator' },
   { routeName: 'Encode/Decode Base64', pathname: '/base64' },
+  { routeName: 'Encode/Decode URL', pathname: '/url-tool' },
   { routeName: 'Encrypt/Decrypt RSA', pathname: '/rsa-tool' },
   { routeName: 'JSON to Interface', pathname: '/json-to-interface' }
   // { routeName: 'Convert Text Format', pathname: '/convert-text-format' }
